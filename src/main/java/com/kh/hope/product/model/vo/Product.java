@@ -16,15 +16,17 @@ public class Product {
 	private int productNo;
 	private String productType;
 	private String puserName;
-	private String phone;
+	private String businessName;
+	private int phone;
 	private String email;
 	private String productWay;
-	private int productAmount;
+	private String productAmount;
 	private String receipt;
 	private String businessNum;
 	private String residentNum;
 	private String status;
 	private Date productDate;
-	private int categoryNo;
+	private int categoryNo;  // cateygoryName, categoryNo 같이 저장
+	private String inquiryContent;
 
 }

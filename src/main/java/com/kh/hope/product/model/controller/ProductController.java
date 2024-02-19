@@ -6,14 +6,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kh.hope.product.model.service.ProductService;
+import com.kh.hope.product.model.vo.Product;
 
-import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
+@SessionAttributes({"donateType"})
 public class ProductController {
 	
 	@Autowired
@@ -31,8 +34,8 @@ public class ProductController {
 		return "product/donateProductForm";
 	}
 	
-	
-    @PostMapping("/productForm.bo")
+//	proudct 페이지에서 proudctForm으로 이동할 때 donateType(개인, 기업) 전달
+    @PostMapping("/product.bo")
     public String handleDonationForm(@RequestParam("donateType") String donateType, Model model) {
         // donateType을 사용하여 원하는 처리를 수행합니다.
         // 이 예제에서는 donateType을 콘솔에 출력하겠습니다.
@@ -44,16 +47,58 @@ public class ProductController {
         return "redirect:/product/donateProductForm";
     }
     
+    @PostMapping("/insertProduct.bo")
+    public String insertProduct(
+    		Product p,
+    		@RequestParam String productType,
+    		@RequestParam String businessName,
+    		@RequestParam String puserName,
+    		@RequestParam int phone,
+    		@RequestParam String email,
+    		@RequestParam String productWay,
+    		@RequestParam String productAmount,
+    		@RequestParam String receipt,
+    		@RequestParam String businessNum,
+    		@RequestParam String residentNum,
+    		@RequestParam int categoryNo,
+    		@RequestParam String inquiryContent,
+    		Model model,
+			HttpSession session) {
+    	
+    	
+    	
+    	log.info("Product : {}", p);
+    	
+    	p.setProductType(productType);
+    	p.setBusinessName(businessName);
+    	p.setPuserName(puserName);
+    	p.setPhone(phone);
+    	p.setEmail(email);
+    	p.setProductWay(productWay);
+    	p.setProductAmount(productAmount);
+    	p.setReceipt(receipt);
+    	p.setBusinessNum(businessNum);
+    	p.setResidentNum(residentNum);
+    	p.setResidentNum(residentNum);
+    	p.setCategoryNo(categoryNo);
+    	p.setInquiryContent(inquiryContent);
+    	
+    	int result = productService.insertProduct(p);
+    	
+    	
+    	String url = "";
+    	if(result > 0) {
+    		session.setAttribute("alertMsg", "물품 기부가 성공적으로 신청되었습니다.");
+    		url = "redirect:/product/donateProduct";
+    		
+    	}else {
+    		model.addAttribute("errorMsg", "물품 기부 신청에 실패하였습니다.");
+    		url = "redirect:/";
+    	}
+    	
+    	
+    	return url;
+    }
     
-	
-	
-	/*
-	 * @PostMapping("/product.bo") public String
-	 * processProductForm(@RequestParam("donateGood") String donateType,
-	 * HttpServletRequest request) { // donateGood 값을 사용하여 필요한 로직을 처리
-	 * 
-	 * // 적절한 뷰로 리다이렉트 (컨텍스트 경로를 포함하여) String contextPath =
-	 * request.getContextPath(); return "redirect:" + contextPath +
-	 * "/product/donateProductForm"; }
-	 */
+
 }

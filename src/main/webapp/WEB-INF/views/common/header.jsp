@@ -18,7 +18,7 @@
     <header class="common">
         <div class='h_header'>
             <div class="h_headerLogo">
-                <img class="h_logo_img" src='${contextPath}/resources/style/img/mainPage/HOPE_logo.png' >
+                <a href="${contextPath}"><img class="h_logo_img" src='${contextPath}/resources/style/img/mainPage/HOPE_logo.png' ></a>
             </div>
             <div class='h_headerSelect'>
                 <div>
@@ -59,12 +59,12 @@
 			</c:choose>
 
         </div>
-        <div class='h_headerMenu headerMenu_news'>
+        <div class='h_headerMenu headerMenu_news' hidden>
             <ul class='h_headerMenu_1'>
                 <h4>소식</h4>
                 <li>행복한 변화와 이야기를 전해드립니다.</li>
             </ul>
-            <ul class='h_headerMenu_2'>
+            <ul class='h_headerMenu_2' >
                 <li><a>나눔후기 게시판</a></li>
                 <li><a>자유 게시판</a></li>
                 <li><a>공지사항</a></li>
@@ -78,13 +78,14 @@
                 </li>
             </ul>
         </div>
-        <div class='h_headerMenu headerMenu_activity'>
+        <div class='h_headerMenu headerMenu_activity' hidden>
             <ul class='h_headerMenu_1'>
                 <h4>활동</h4>
                 <li>도움이 가장 필요한 곳에 후원자님의 사랑을 전달합니다.</li>
             </ul>
             <ul class='h_headerMenu_2'>
                 <li><a>봉사활동 지원하기</a></li>
+                <li><a>헌혈 게시판</a></li>
             </ul>
             <ul class='h_headerMenu_3'>
                 <li>
