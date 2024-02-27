@@ -23,15 +23,27 @@ public class ActivityReportDao {
 		return session.selectOne("activityreportMapper.selectListCount",map);
 	}
 
-	public List<ActivityReport> noticeList(PageInfo pi, Map<String, Object> map) {
+	public List<ActivityReport> reportList(PageInfo pi, Map<String, Object> map) {
 		
 		int limit = pi.getBoardLimit();
 		int offset=(pi.getCurrentPage()-1)*limit;
 		
 		RowBounds rowBounds = new RowBounds(offset,limit);
 		
-		return session.selectList("activityreportMapper.noticeList",map,rowBounds);
+		return session.selectList("activityreportMapper.reportList",map,rowBounds);
 	}
+	
+	
+	/* 활동보고서 상세보기 */
+	public ActivityReport selectActivityReport(int reportNo) {
+		return session.selectOne("activityreportMapper.selectActivityReport",reportNo);
+	}
+
+	public int increaseCount(int reportNo) {
+		return session.update("activityreportMapper.increaseCount",reportNo);
+	}
+
+	
 	
 	
 }

@@ -16,4 +16,8 @@ public class ActivityReport {
 	private String reportContent;
 	private int count;
 	private Date createDate;
+	public int userNo;
+	
+	private Date activityStartDate;
+	private Date activityEndDate;
 }

@@ -11,7 +11,10 @@ public interface ActivityReportService {
 	/* 활동보고서 list */
 	int selectListCount(Map<String, Object> map);
 	
-	List<ActivityReport> noticeList(PageInfo pi, Map<String, Object> map);
+	List<ActivityReport> reportList(PageInfo pi, Map<String, Object> map);
+	
+	
+	
 	
 	ActivityReport selectActivityReport(int reportNo);
 	
