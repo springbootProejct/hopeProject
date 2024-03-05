@@ -6,24 +6,24 @@
 	<!-- 활동보고서 리스트 -->
 	<select id="selectListCount" resultType="int">
 		SELECT COUNT(*)
-		FROM ACTIVITYREPORT
+		FROM ACTIVITY_REPORT
 	</select>
 	
 	<select id="reportList" parameterType="hashMap" resultType="activityreport">
 		SELECT REPORT_NO, REPORT_TITLE, COUNT, CREATE_DATE
-		FROM ACTIVITYREPORT
-		ORDER BY REPORT_NO ASC
+		FROM ACTIVITY_REPORT
+		ORDER BY REPORT_NO DESC
 	</select>
 	
 	<!-- 활동보고서 상세 -->
 	<select id="selectActivityReport" parameterType="int" resultType="activityreport">
 		SELECT REPORT_NO, REPORT_TITLE, REPORT_CONTENT, COUNT, CREATE_DATE, ACTIVITY_START_DATE, ACTIVITY_END_DATE
-		FROM ACTIVITYREPORT R
+		FROM ACTIVITY_REPORT R
 		WHERE REPORT_NO = #{reportNo}
 	</select>
 	
 	<select id="increaseCount" >
-		UPDATE ACTIVITYREPORT
+		UPDATE ACTIVITY_REPORT
 		SET COUNT = COUNT+1
 		WHERE REPORT_NO = #{reportNo}
 	</select>
@@ -33,7 +33,7 @@
 		INSERT INTO ACTIVITY_REPORT
 		(REPORT_NO, REPORT_TITLE, REPORT_CONTENT, CREATE_DATE, ACTIVITY_START_DATE, ACTIVITY_END_DATE)
 		VALUES
-		(SEQ_AREPORTNO.nextval, #{reportTitle}, #{reportContent}, SYSDATE, #{createDate}, #{activityStartDate}, #{activityEndDate})
+		(SEQ_AREPORTNO.nextval, #{reportTitle}, #{reportContent}, SYSDATE,  #{activityStartDate}, #{activityEndDate})
 	</insert>
 
 

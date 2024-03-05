@@ -41,6 +41,11 @@ public class ActivityReportServiceImp implements ActivityReportService{
 		return dao.increaseCount(reportNo);
 	}
 
+	@Override
+	public int insertActivityReport(ActivityReport activityReport) {
+		return dao.insertActivityReport(activityReport);
+	}
+
 
 	
 }

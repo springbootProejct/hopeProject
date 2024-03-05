@@ -43,6 +43,10 @@ public class ActivityReportDao {
 		return session.update("activityreportMapper.increaseCount",reportNo);
 	}
 
+	public int insertActivityReport(ActivityReport activityReport) {
+		return session.insert("activityreportMapper.insertActivityReport",activityReport);
+	}
+
 	
 	
 	

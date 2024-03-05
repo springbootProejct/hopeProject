@@ -64,7 +64,6 @@
 							<td colspan="2" style="width: 30%;">${ar.createDate}</td>
 							<th class="header" colspan="2">작성자</th>
 							<td colspan="2">관리자</td>
-
 						</tr>
 						
 						<tr>
@@ -78,7 +77,6 @@
 							<td class="span-two" colspan="6">${ar.activityStartDate} ~ ${ar.activityEndDate}</td>
 						</tr>
 
-						
 
 						<tr>
 							<th class="header" style="height: 500px;">활동내용</th>
@@ -94,6 +92,8 @@
 					<div class="detail-btn">
 						<button class="list-btn"
 							onclick="window.location.href='${contextPath}/activityreport'">목록</button>
+						<button class="list-btn"
+							onclick="window.location.href='${contextPath}/activityreport'">삭제</button>
 					</div>
 
 				</div>

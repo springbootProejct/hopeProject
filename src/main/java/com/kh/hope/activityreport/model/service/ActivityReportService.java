@@ -15,12 +15,16 @@ public interface ActivityReportService {
 	List<ActivityReport> reportList(PageInfo pi, Map<String, Object> map);
 	
 	
-	
-	
 	ActivityReport selectActivityReport(int reportNo);
 	
 	int increaseCount(int reportNo);
+
+
+	int insertActivityReport(ActivityReport activityReport);
+	
 }
+
+
 
 
 

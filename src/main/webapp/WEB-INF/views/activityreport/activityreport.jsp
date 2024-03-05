@@ -33,7 +33,17 @@
 					</div>
 
 					<div class="Sn-selection">
-						<div></div>
+						<div>
+							<div class="Sn-component-1">
+								<div class="Sn-chip-1">
+									<c:if test="${not empty loginUser}">
+										<div class="Sn-text-1"
+											onclick="window.location.href='${contextPath}/activityreportinsert'">글쓰기</div>
+									</c:if>
+								</div>
+
+							</div>
+						</div>
 					</div>
 
 					<div class="Sn-section">

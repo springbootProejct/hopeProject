@@ -1,5 +1,6 @@
 package com.kh.hope.activityreport.controller;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -8,14 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.hope.activityreport.model.service.ActivityReportService;
 import com.kh.hope.activityreport.model.vo.ActivityReport;
-import com.kh.hope.attachment.model.vo.Attachment;
-import com.kh.hope.board.model.vo.Board;
 import com.kh.hope.common.Template.model.vo.Pagenation;
 import com.kh.hope.common.model.vo.PageInfo;
 import com.kh.hope.user.model.vo.User;
@@ -104,5 +103,38 @@ public class ActivityReportController {
 		return "activityreport/activityreportDetail";
 	}
 	
+	@GetMapping("/activityreportinsert")
+	public String showActivityReportForm() {
+		// 활동보고서 작성 폼을 보여주는 페이지로 이동
+		return "activityreport/activityreportInsert";
+	}
+	
+	@PostMapping("/activityreportinsert")
+	public String insertActivityReport(
+			@RequestParam("reportTitle") String reportTitle,
+		    @RequestParam("reportContent") String reportContent,
+		    @RequestParam("activityStartDate") Date activityStartDate,
+		    @RequestParam("activityEndDate") Date activityEndDate,
+			RedirectAttributes redirectAttributes) {
+		// 사용자로부터 입력받은 파라미터 값을 이용하여 ActivityReport 객체를 생성
+	    ActivityReport activityReport = new ActivityReport();
+	    activityReport.setReportTitle(reportTitle);
+	    activityReport.setReportContent(reportContent);
+	    activityReport.setActivityStartDate(activityStartDate);
+	    activityReport.setActivityEndDate(activityEndDate);
+
+	    // 서비스를 통해 활동 보고서를 DB에 저장
+	    int result = service.insertActivityReport(activityReport);
+	    
+	    if(result > 0) {
+	        // 저장 성공 시 메시지를 리다이렉트한 페이지로 전달
+	        redirectAttributes.addFlashAttribute("successMessage", "활동 보고서가 성공적으로 저장되었습니다.");
+	    } else {
+	        // 저장 실패 시 메시지를 리다이렉트한 페이지로 전달
+	        redirectAttributes.addFlashAttribute("errorMessage", "활동 보고서 저장에 실패하였습니다. 다시 시도해주세요.");
+	    }
+	    
+	    return "redirect:/activityreport"; // 다시 입력 폼으로 리다이렉트
+	}
 	
 }
