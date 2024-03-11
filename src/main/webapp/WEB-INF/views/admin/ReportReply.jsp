@@ -91,7 +91,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	
 	<script>
 	function deleteBoard(reportNo) {
 	       

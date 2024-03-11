@@ -13,7 +13,16 @@
 <!-- include summernote css/js-->
 
 <link rel="stylesheet" href="${contextPath}/resources/style/css/sangjun.css/summernote/summernote-lite.css">
-
+<style>
+	.h_boardTitle{
+	  height:330px;
+	  padding-top: 100px;
+	   background-image: url('${contextPath}/resources/images/board/board1.jpg');
+	  background-size: cover;
+	  background-position: center;
+	  margin-bottom: 50px;
+	}
+	</style>
 
 </head>
 <body>
@@ -27,8 +36,8 @@
 	<main>
 		<section>
 			<article class="h_boardTitle">
-				<h1>자원봉사</h1>
-				<p>자원봉사 함께 나아가는 더 나은 세상.</p>
+				<h1>소식</h1>
+            <p>나눔과 순환의 아름다운 세상 이야기를 전합니다</p>
 			</article>
 		</section>
 		<div class="Sn-insert-wrapper">

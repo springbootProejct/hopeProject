@@ -107,14 +107,14 @@
 	<select id="selectImgList" parameterType="int" resultType="attachment">
 		SELECT ORIGIN_NAME , FILE_NO, REF_FNO
 		FROM ATTACHMENT
-		WHERE REF_FNO=#{boardNo}
+		WHERE REF_FNO=#{boardNo} AND FILE_TYPE='B'
 		ORDER BY IMG_LEVEL
 	</select>
 	
 	<select id="selectImg" parameterType="int" resultType="attachment">
 		SELECT ORIGIN_NAME , FILE_NO , CHANGE_NAME
 		FROM ATTACHMENT
-		WHERE FILE_NO=#{fileNo}
+		WHERE FILE_NO=#{fileNo} 
 		ORDER BY IMG_LEVEL
 	</select>
 	<!-- 공지사항 수정 -->
@@ -123,7 +123,7 @@
 		FROM USERS
 		LEFT JOIN BOARD B USING (USER_NO)
 		LEFT JOIN ATTACHMENT A ON (BOARD_NO = REF_FNO)
-		WHERE BOARD_NO = #{boardNo}
+		WHERE BOARD_NO = #{boardNo} 
 		AND B. STATUS = 'Y'
 	</select>
 	<update id="updateBoardInsert" parameterType="board">
@@ -136,7 +136,7 @@
 		UPDATE ATTACHMENT
 		SET ORIGIN_NAME=#{originName},
 		CHANGE_NAME=#{changeName}
-		WHERE REF_FNO = #{refFno} AND IMG_LEVEL=#{imgLevel}
+		WHERE REF_FNO = #{refFno} AND IMG_LEVEL=#{imgLevel} AND FILE_TYPE='B'
 	</update>
 	<insert id="insertNoticeImg" >
 		INSERT INTO ATTACHMENT
@@ -146,7 +146,7 @@
 	</insert>
 	<delete id="deleteNoticeImg" parameterType="string">
 		DELETE FROM ATTACHMENT
-		WHERE FILE_NO IN(${deleteList})
+		WHERE FILE_NO IN(${deleteList})AND FILE_TYPE='B'
 	</delete>
 	
 	<select id="selectFileList" resultType="string">
@@ -234,15 +234,18 @@
 	</update>
 	<delete id="deleteAttachment" parameterType="int">
 		DELETE FROM ATTACHMENT
-		WHERE FILE_NO =#{fileNo}
+		WHERE FILE_NO =#{fileNo} 
 	</delete>
 	<!-- 이야기리스트 -->
 	<select id="selectStoryCount" resultType="int">
 		SELECT COUNT(*)
-		FROM BOARD B
-		LEFT JOIN USERS USING (USER_NO)
-		WHERE B.STATUS='Y'
-		AND BOARD_TYPE_NO ='C'
+		FROM USERS U
+		LEFT JOIN BOARD B ON (U.USER_NO=B.USER_NO)
+        LEFT JOIN ATTACHMENT A ON (B.BOARD_NO = REF_FNO)
+		WHERE BOARD_TYPE_NO = 'C'
+		AND B.STATUS='Y'
+		AND (IMG_LEVEL=0 OR IMG_LEVEL IS NULL)
+		
 		<if test="keyword!=null and keyword != ''">
 			AND
 			<choose>
@@ -264,6 +267,7 @@
 		WHERE BOARD_TYPE_NO = 'C'
 		AND B.STATUS='Y'
 		AND (IMG_LEVEL=0 OR IMG_LEVEL IS NULL)
+		
 		<if test="keyword!=null and keyword != ''">
 			AND
 			<choose>
@@ -281,10 +285,13 @@
 	<!-- 나눔후기리스트 -->
 	<select id="selectReviewCount" resultType="int">
 		SELECT COUNT(*)
-		FROM BOARD B
-		LEFT JOIN USERS USING (USER_NO)
-		WHERE B.STATUS='Y'
-		AND BOARD_TYPE_NO ='R'
+		FROM USERS U
+		LEFT JOIN BOARD B ON (U.USER_NO=B.USER_NO)
+        LEFT JOIN ATTACHMENT A ON (B.BOARD_NO = REF_FNO)
+		WHERE BOARD_TYPE_NO = 'R'
+		AND B.STATUS='Y'
+		AND (IMG_LEVEL=0 OR IMG_LEVEL IS NULL)
+		
 		<if test="keyword!=null and keyword != ''">
 			AND
 			<choose>

@@ -1,0 +1,119 @@
+ body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Wrapper styles */
+        #wrapper {
+            width: 100%;
+        }
+
+        /* Content Wrapper styles */
+        #content-wrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        /* Main Content styles */
+        #content {
+            width: 100%;
+            flex-grow: 1;
+        }
+
+        /* Container Fluid styles */
+        .container-fluid {
+            padding: 20px;
+        }
+
+        /* Header styles */
+        .entry-header {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .entry-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0 0 10px 0; /* 위, 오른쪽, 아래, 왼쪽 마진 설정 */
+        }
+
+        .entry-meta {
+            margin-top: 10px;
+            margin-bottom: 20px; /* 데이터 아래 마진 설정 */
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .detail-date {
+            display: inline-block; /* 인라인 블록 요소로 설정하여 가로 정렬 */
+            margin-right: 10px; /* 오른쪽 마진 설정 */
+        }
+
+        .detail-date- {
+            display: inline-block; /* 인라인 블록 요소로 설정하여 가로 정렬 */
+        }
+
+	 .btn-group1 {
+        position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse; /* 수정된 부분: 버튼을 왼쪽에서 오른쪽으로 표시 */
+}
+
+        /* Reply Content styles */
+        .reply-content {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .detail-content {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            min-height: 100px; /* 내용 최소 높이 설정 */
+            margin: 0 auto 20px auto; /* 위, 아래 마진은 20px, 좌우는 자동으로 설정하여 가운데 정렬 */
+            width: 80%; /* 내용 폭을 조정하여 가운데 정렬 */
+        }
+
+       
+
+        .login-detail-btn button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .delete-btn {
+       	background: #333;
+    border: 1px solid #333;
+    color: #fff !important;
+    padding: 8px 15px;
+    font-size: 13px;
+    line-height: 1.444;
+    font-weight: 600;
+    margin-bottom: 50px;
+        }
+
+        .list-btn {
+        	background: #333;
+    border: 1px solid #333;
+    color: #fff !important;
+    padding: 8px 15px;
+    font-size: 13px;
+    line-height: 1.444;
+    font-weight: 600;
+    margin-bottom: 50px;
+        }
+        
+ .delete-btn:hover,
+        .list-btn:hover {
+            background-color: #555;
+            border-color: #555;
+        }
+    

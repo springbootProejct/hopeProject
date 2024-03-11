@@ -9,14 +9,25 @@
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <link rel="stylesheet" href="${contextPath}/resources/style/css/sangjun.css/SFAQList1.css">
+<style>
+	.h_boardTitle{
+	  height:330px;
+	  padding-top: 100px;
+	  background-image: url('${contextPath}/resources/images/board/notice1.jpg');
+	  background-size: cover;
+	  background-position: center;
+	  margin-bottom: 50px;
+	 /* 마우스 커서를 포인터로 변경 */
+	}
+	</style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
   <main>
   <section>
         <article class="h_boardTitle">
-            <h1>자원봉사</h1>
-            <p>자원봉사 함께 나아가는 더 나은 세상.</p>
+            <h1>자주묻는질문</h1>
+            <p>아름다운가게와 함께 나눔을 직접 경험해보세요</p>
         </article>
     </section>
     <div class="Sn-wrapper1">
@@ -25,7 +36,7 @@
                 <div>
                     <div>
                         <div>
-                            <h2 style="text-align: center; margin-top: 70px; font-size: 25px;" onclick="window.location.href='${contextPath}/board/Q'">자주묻는질문</h2>
+                            <h2 style="cursor: pointer;text-align: center; margin-top: 70px; font-size: 25px;" onclick="window.location.href='${contextPath}/board/Q'">자주묻는질문</h2>
         					<div class="donateGoodFormBorder" style="margin-left: auto; margin-right: auto;"></div>
                         </div>
                     </div>

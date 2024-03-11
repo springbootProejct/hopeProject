@@ -9,16 +9,7 @@
 	font-family: 'NanumSquareNeo-Variable';
 }
 
-.h_boardTitle{
-	
-  height:330px;
-  padding-top: 100px;
-  background-image: url('https://www.beautifulstore.org/wp-content/themes/bs/images/meta/bg_donation01.png');
-  background-size: cover;
-  background-position: center;
-  margin-bottom: 50px;
-   
-}
+
 /* 제목 정렬 */
 .h_boardTitle h1,
 .h_boardTitle > p{

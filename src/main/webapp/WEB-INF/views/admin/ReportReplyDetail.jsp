@@ -14,7 +14,8 @@
 }
 </style>
 <link rel="stylesheet"
-	href="${contextPath}/resources/style/css/sangjun.css/SnoticeDetail.css">
+	href="${contextPath}/resources/style/css/sangjun.css/adminDetail.css">
+
 	<link rel="stylesheet" href="${contextPath}/resources/style/css/sangjun.css/summernote/summernote-lite.css">
 </head>
 <body>
@@ -61,7 +62,7 @@
     
                                 </section>
                                 
-                                <div class="btn-group">
+                                <div class="btn-group1">
                                     <div class="login-detail-btn">
                                                               
                                         <button class="delete-btn" onclick="deleteBoard(${b.replyNo})">삭제</button>                                                     
